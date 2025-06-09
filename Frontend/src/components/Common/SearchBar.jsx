@@ -21,7 +21,7 @@ const SearchBar = () => {
                 }`}
         >
             {isOpen ? (
-                <form onSubmit={handleSearch} className="relative flex items-center justify-center w-full">
+                <form onSubmit={handleSearch} className="relative flex justify-between items-center w-full">
                     <div className="relative w-1/2">
                         <input
                             type="text"
