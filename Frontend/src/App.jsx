@@ -9,6 +9,14 @@ import Profile from './pages/Profile'
 import CollectionPages from './pages/CollectionPages'
 import ProductDetails from './components/Products/ProductDetails'
 import CheckOut from './components/Cart/CheckOut'
+import OrderConfirmationPage from './pages/OrderConfirmationPage'
+import OrderDetailsPage from './pages/OrderDetailsPage'
+import MyOrderPage from './pages/MyOrderPage'
+import AdminLayout from './components/Admin/AdminLayout'
+import AdminHomePage from './pages/AdminHomePage'
+import UserManagement from './components/Admin/UserManagement'
+import ProductManagement from './components/Admin/ProductManagement'
+import EditProduct from './components/Admin/EditProduct'
 
 const App = () => {
   return (
@@ -22,9 +30,17 @@ const App = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/collections/:collection" element={<CollectionPages />} />
           <Route path="/product/:id" element={<ProductDetails />} />
-          <Route path='/checkout' element={ <CheckOut/> } />
+          <Route path='/checkout' element={<CheckOut />} />
+          <Route path='/order-confirmation' element={<OrderConfirmationPage />} />
+          <Route path='/order/:id' element={<OrderDetailsPage />} />
+          <Route path='/my-orders' element={<MyOrderPage />} />
         </Route>
-        <Route>{/* Admin Layout */}</Route>
+        <Route path='/admin' element={<AdminLayout />}>
+          <Route index element={<AdminHomePage/>}/>
+          <Route path='users' element={<UserManagement />} />
+          <Route path='products' element={<ProductManagement />} />
+          <Route path='products/:id/edit' element={<EditProduct />} />
+        </Route>
       </Routes>
     </>
 
