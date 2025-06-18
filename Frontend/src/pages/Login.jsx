@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import login from "../assets/login.webp"
+import { loginUser } from '../redux/slices/authSlice'
+import { useDispatch } from "react-redux"
 
 const Login = () => {
     const [email, setemail] = useState("")
     const [password, setpassword] = useState("")
+    const dispatch = useDispatch()
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log("User Login:", { email, password})
+        dispatch(loginUser({email, password}))
     }
 
     return (
@@ -31,7 +34,7 @@ const Login = () => {
                         <input type="password" value={password} onChange={(e) => setpassword(e.target.value)} className='w-full border  p-2 rounded' placeholder='Enter your password' />
                     </div>
                     <button type='submit' className='w-full bg-black text-white rounded-lg p-2 font-semibold hover:bg-gray-800 transition'>Sign In</button>
-                    <p className='mt-6 text-center text-sm '>Don't have an account 
+                    <p className='mt-6 text-center text-sm '>Don't have an account
                         <Link to="/register" className='text-blue-500'>  Register</Link>
                     </p>
                 </form>
