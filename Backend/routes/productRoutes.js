@@ -211,10 +211,17 @@ router.get("/", async (req, res) => {
     }
 
     if (search) {
-      query.$or = [
+      const searchConditions = [
         { name: { $regex: search, $options: "i" } },
         { description: { $regex: search, $options: "i" } },
       ];
+
+      if (Object.keys(query).length > 0) {
+        query.$and = [{ $or: searchConditions }, query];
+        delete query.$or;
+      } else {
+        query.$or = searchConditions;
+      }
     }
 
     // sort logic
@@ -254,14 +261,14 @@ router.get("/", async (req, res) => {
 router.get("/best-seller", async (req, res) => {
   try {
     const bestSeller = await Product.findOne().sort({ rating: -1 });
-    if(bestSeller) {
-      res.json(bestSeller)
+    if (bestSeller) {
+      res.json(bestSeller);
     } else {
-      res.status(404).json({message: "no  bestseller found"})
+      res.status(404).json({ message: "no  bestseller found" });
     }
   } catch (error) {
     console.error(error);
-    res.status(500).send("server error")
+    res.status(500).send("server error");
   }
 });
 
@@ -273,14 +280,13 @@ router.get("/new-arrivals", async (req, res) => {
   try {
     // fetch latest 8 products
 
-    const newArrivals = await Product.find().sort({createdAt: -1}).limit(8)
-    res.json(newArrivals)
-
+    const newArrivals = await Product.find().sort({ createdAt: -1 }).limit(8);
+    res.json(newArrivals);
   } catch (error) {
     console.error(error);
-    res.status(500).send("server error")
+    res.status(500).send("server error");
   }
-})
+});
 
 // route get api/products/:id
 //  desc get a single product by id

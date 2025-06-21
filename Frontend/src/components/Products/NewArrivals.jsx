@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useRef, useState, useEffect } from 'react'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
@@ -13,98 +14,24 @@ const NewArrivals = () => {
     const [scrollLeft, setScrollLeft] = useState(0)
     const [mouseDown, setMouseDown] = useState(false)
 
-    const dragThreshold = 5 // drag start होने के लिए min distance
+    const dragThreshold = 5
 
-    const newArrivals = [
-        {
-            _id: "1",
-            name: "Stylish Jacket",
-            price: 120,
-            images: [
-                {
-                    url: "https://picsum.photos/seed/1/500/500.jpg",
-                    altText: "Stylish Jacket 1"
-                }
-            ]
-        },
-        {
-            _id: "2",
-            name: "Stylish Jacket",
-            price: 120,
-            images: [
-                {
-                    url: "https://picsum.photos/seed/2/500/500.jpg",
-                    altText: "Stylish Jacket 2"
-                }
-            ]
-        },
-        {
-            _id: "3",
-            name: "Stylish Jacket",
-            price: 120,
-            images: [
-                {
-                    url: "https://picsum.photos/seed/3/500/500.jpg",
-                    altText: "Stylish Jacket 3"
-                }
-            ]
-        },
-        {
-            _id: "4",
-            name: "Stylish Jacket",
-            price: 120,
-            images: [
-                {
-                    url: "https://picsum.photos/seed/4/500/500.jpg",
-                    altText: "Stylish Jacket 4"
-                }
-            ]
-        },
-        {
-            _id: "5",
-            name: "Stylish Jacket",
-            price: 120,
-            images: [
-                {
-                    url: "https://picsum.photos/seed/5/500/500.jpg",
-                    altText: "Stylish Jacket 5"
-                }
-            ]
-        },
-        {
-            _id: "6",
-            name: "Stylish Jacket",
-            price: 120,
-            images: [
-                {
-                    url: "https://picsum.photos/seed/6/500/500.jpg",
-                    altText: "Stylish Jacket 6"
-                }
-            ]
-        },
-        {
-            _id: "7",
-            name: "Stylish Jacket",
-            price: 120,
-            images: [
-                {
-                    url: "https://picsum.photos/seed/7/500/500.jpg",
-                    altText: "Stylish Jacket 7"
-                }
-            ]
-        },
-        {
-            _id: "8",
-            name: "Stylish Jacket",
-            price: 120,
-            images: [
-                {
-                    url: "https://picsum.photos/seed/8/500/500.jpg",
-                    altText: "Stylish Jacket 8"
-                }
-            ]
+    const [newArrivals, setnewArrivals] = useState([])
+
+    useEffect(() => {
+        const fetchNewArrivals = async () => {
+            try {
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/products/new-arrivals`);
+                setnewArrivals(response.data);
+            } catch (error) {
+                console.error(error);
+                fetchNewArrivals();
+            }
         }
-    ];
+
+        fetchNewArrivals();
+    }, []);
+
 
 
     const handleMouseDown = (e) => {
@@ -161,7 +88,7 @@ const NewArrivals = () => {
 
         el.addEventListener('scroll', checkScroll)
         return () => el.removeEventListener('scroll', checkScroll)
-    }, [])
+    }, [newArrivals])
 
     return (
         <div className='px-10 py-12'>

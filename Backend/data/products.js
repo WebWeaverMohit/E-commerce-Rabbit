@@ -18,11 +18,11 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=39",
+        url: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c2hpcnR8ZW58MHx8MHx8fDA%3Dhttps://images.unsplash.com/photo-1688011739922-ecab3d14da99?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHNoaXJ0JTIwYmFja3xlbnwwfHwwfHx8MA%3D%3D",
         altText: "Classic Oxford Button-Down Shirt Front View",
       },
       {
-        url: "https://picsum.photos/500/500?random=40",
+        url: "https://images.unsplash.com/photo-1688011739055-3a72fc72f4dd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHNoaXJ0JTIwYmFja3xlbnwwfHwwfHx8MA%3D%3D",
         altText: "Classic Oxford Button-Down Shirt Back View",
       },
     ],
@@ -46,11 +46,11 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=41",
+        url: "https://images.unsplash.com/photo-1666358777552-e9da24998db8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fFNsaW0lMjBGaXQlMjBTdHJldGNoJTIwU2hpcnR8ZW58MHx8MHx8fDA%3D",
         altText: "Slim-Fit Stretch Shirt Front View",
       },
       {
-        url: "https://picsum.photos/500/500?random=42",
+        url: "https://images.unsplash.com/photo-1666358087708-d395db443f09?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8U2xpbSUyMEZpdCUyMFN0cmV0Y2glMjBTaGlydHxlbnwwfHwwfHx8MA%3D%3D",
         altText: "Slim-Fit Stretch Shirt Back View",
       },
     ],
@@ -74,11 +74,11 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=43",
+        url: "https://images.unsplash.com/photo-1613752978317-afcfd1bba65a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8RGVuaW0lMjBTaGlydHxlbnwwfHwwfHx8MA%3D%3D",
         altText: "Casual Denim Shirt Front View",
       },
       {
-        url: "https://picsum.photos/500/500?random=44",
+        url: "https://media.istockphoto.com/id/503191264/photo/back-view-of-casual-man.jpg?s=2048x2048&w=is&k=20&c=kCI8z2yVvNIW40zU6OmXKfKVCx1Sg3eNATOn9HPLNZA=",
         altText: "Casual Denim Shirt Back View",
       },
     ],
@@ -102,11 +102,11 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=45",
+        url: "https://images.unsplash.com/photo-1695300576133-f97b57e599c3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8UHJpbnRlZCUyMFJlc29ydCUyMFNoaXJ0fGVufDB8fDB8fHww",
         altText: "Printed Resort Shirt Front View",
       },
       {
-        url: "https://picsum.photos/500/500?random=1",
+        url: "https://images.unsplash.com/photo-1692818277558-f1e7c9d0f54e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fFByaW50ZWQlMjBSZXNvcnQlMjBTaGlydHxlbnwwfHwwfHx8MA%3D%3D",
         altText: "Printed Resort Shirt Back View",
       },
     ],
@@ -130,11 +130,11 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=47",
+        url: "https://images.unsplash.com/photo-1639795198827-866abf330151?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fFNsaW0lMjBGaXQlMjBFYXN5JTIwSXJvbiUyMFNoaXJ0fGVufDB8fDB8fHww",
         altText: "Slim-Fit Easy-Iron Shirt Front View",
       },
       {
-        url: "https://picsum.photos/500/500?random=2",
+        url: "https://media.istockphoto.com/id/498547216/photo/young-man-back-portrait-in-blue.webp?a=1&b=1&s=612x612&w=0&k=20&c=BBXinqCtVlXMY-spOuGpffW6P0WU3jYAsQ9k7NhIQYI=",
         altText: "Slim-Fit Easy-Iron Shirt Front View",
       },
     ],
@@ -158,11 +158,11 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=3",
+        url: "https://media.istockphoto.com/id/1197243902/photo/bougainville-flag-on-shirt-and-hanging-on-the-wall-with-brick-pattern-wallpaper.webp?a=1&b=1&s=612x612&w=0&k=20&c=Mi7B7YyJ-8FFkhBcrXO4bIuo5UJQHTqDN_WWHZd2wpk=",
         altText: "Polo T-Shirt Front View",
       },
       {
-        url: "https://picsum.photos/500/500?random=4",
+        url: "https://media.istockphoto.com/id/1197243896/photo/man-wearing-bougainville-flag-color-shirt-and-cross-ones-arm-on-wooden-wall-background.webp?a=1&b=1&s=612x612&w=0&k=20&c=KgwaRs1qBkEtTFlEO3lrgptvE5HhS6HS7dj4pcdrFXY=",
         altText: "Polo T-Shirt Back View",
       },
     ],
@@ -186,7 +186,7 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=5",
+        url: "https://media.istockphoto.com/id/1320367916/photo/man-wearing-black-blank-t-shirt-and-a-black-baseball-cap-with-space-for-your-logo-or-design.webp?a=1&b=1&s=612x612&w=0&k=20&c=nXX2rD3NdRIh6pS295LOAWP1buYUhPCQpZ2J4tKkx8I=",
         altText: "Oversized Graphic T-Shirt Front View",
       },
     ],
@@ -210,7 +210,7 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=6",
+        url: "https://images.unsplash.com/photo-1694485338927-49564929019d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aGVubGV5JTIwc2hpcnR8ZW58MHx8MHx8fDA%3D",
         altText: "Regular-Fit Henley Shirt Front View",
       },
     ],
@@ -234,7 +234,7 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=7",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/e/q/t/xxl-tcn-sobi-gy-the-bear-house-original-imahc4et3gxzghjf.jpeg?q=70",
         altText: "Long-Sleeve Thermal Tee Front View",
       },
     ],
@@ -258,7 +258,7 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=8",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/f/p/x/xl-vneckhs-smart-colors-original-imagkgtghekzzq2t.jpeg?q=70",
         altText: "V-Neck Classic T-Shirt Front View",
       },
     ],
@@ -282,7 +282,7 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=9",
+        url: "https://images.unsplash.com/photo-1620354867501-a6908cf18841?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fFNsaW0lMjBGaXQlMjBKb2dnZXJzJTIwbWVufGVufDB8MXwwfHx8MA%3D%3D",
         altText: "Slim Fit Joggers Front View",
       },
     ],
@@ -306,7 +306,7 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=10",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/cargo/l/d/x/l-118-d-p-greye9-m-fusion-original-imahcnyz3gd3qmjj.jpeg?q=70",
         altText: "Cargo Joggers Front View",
       },
     ],
@@ -330,7 +330,7 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=11",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/cargo/l/d/x/l-118-d-p-greye9-m-fusion-original-imahcnyz3gd3qmjj.jpeg?q=70",
         altText: "Tapered Sweatpants Front View",
       },
     ],
@@ -354,7 +354,7 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=12",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/jean/x/f/8/28-dl-men-baggy-201-denim-look-original-imah8z37hewugw9k.jpeg?q=70",
         altText: "Denim Jeans Front View",
       },
     ],
@@ -378,7 +378,7 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=13",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/trouser/x/k/1/32-vd-1818331-15410-v-mart-original-imahbbdztge4qktg.jpeg?q=70",
         altText: "Chino Pants Front View",
       },
     ],
@@ -402,7 +402,7 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=14",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/track-pant/g/q/s/m-jn3441-adidas-original-imahbg3bsbthytsm.jpeg?q=70",
         altText: "Track Pants Front View",
       },
     ],
@@ -426,7 +426,7 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=15",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/trouser/g/f/j/32-ps501-avolt-original-imahyz3rcjhghujb.jpeg?q=70",
         altText: "Slim Fit Trousers Front View",
       },
     ],
@@ -450,7 +450,7 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=16",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/cargo/h/e/y/m-togrjogplain-cargo-tripr-original-imah6yfey54hbp2x.jpeg?q=70",
         altText: "Cargo Pants Front View",
       },
     ],
@@ -474,7 +474,7 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=17",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/cargo/z/i/i/xxl-tbljog-cargo31-tripr-original-imahd2qmzgg5y5wc.jpeg?q=70",
         altText: "Relaxed Fit Sweatpants Front View",
       },
     ],
@@ -498,7 +498,7 @@ const products = [
     gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=18",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/trouser/q/h/w/30-aa-formal-pants-peter-richard-original-imaggtzg35eeujbz.jpeg?q=70",
         altText: "Formal Dress Pants Front View",
       },
     ],
@@ -522,7 +522,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=19",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/trouser/t/f/g/32-peanuts-cream-veloxwear-original-imah8mzfj7nffbuj.jpeg?q=70",
         altText: "High-Waist Skinny Jeans",
       },
     ],
@@ -546,7 +546,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=20",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/trouser/z/y/a/-original-imahbpqss9e82h9j.jpeg?q=70",
         altText: "Wide-Leg Trousers Front View",
       },
     ],
@@ -570,7 +570,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=21",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/legging/f/8/t/3xl-cotton-lycra-4-way-stretch-plain-belt-ankle-lenght-leggings-original-imahb2bts8qw8eyh.jpeg?q=70",
         altText: "Stretch Leggings Front View",
       },
     ],
@@ -594,7 +594,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=22",
+        url: "https://rukminim2.flixcart.com/image/612/612/l0r1j0w0/skirt/f/a/c/xl-lskr08-735-dp-la-zoire-original-imagch25zpjnmha4.jpeg?q=70",
         altText: "Pleated Midi Skirt Front View",
       },
     ],
@@ -618,7 +618,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=23",
+        url: "https://rukminim2.flixcart.com/image/612/612/l0r1j0w0/skirt/f/a/c/xl-lskr08-735-dp-la-zoire-original-imagch25zpjnmha4.jpeg?q=70",
         altText: "Flared Palazzo Pants Front View",
       },
     ],
@@ -642,7 +642,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=24",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/jean/r/4/w/36-m-a16-01-crgo-blu-maniere-creations-original-imagg9f3nuzv75cm.jpeg?q=70",
         altText: "High-Rise Joggers Front View",
       },
     ],
@@ -666,7 +666,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=25",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/short/n/e/v/28-womens-dori-atly-original-imahcfxtsnwbb3mj.jpeg?q=70",
         altText: "Paperbag Waist Shorts Front View",
       },
     ],
@@ -690,7 +690,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=26",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/short/b/f/7/34-doss22den09-09-337-dolce-crudo-original-imah92byjhw8pakz.jpeg?q=70",
         altText: "Stretch Denim Shorts Front View",
       },
     ],
@@ -714,7 +714,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=27",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/trouser/g/9/9/l-shopant33862-qashida-original-imahbj3fpq7upen4.jpeg?q=70",
         altText: "Culottes Front View",
       },
     ],
@@ -738,7 +738,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=28",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/trouser/w/m/m/xl-11171-tandul-original-imahchzzyqhebtzs.jpeg?q=70",
         altText: "Classic Pleated Trousers Front View",
       },
     ],
@@ -762,7 +762,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=29",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/top/k/0/i/xl-1-top-1050-prplrbhs-unaone-original-imahbezmavafsh49.jpeg?q=70",
         altText: "Knitted Cropped Top",
       },
     ],
@@ -786,7 +786,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=30",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/blouse/3/m/j/38-yelloe-flower-blouse-ayesha-store-original-imah8afwrbg4nmsn.jpeg?q=70",
         altText: "Boho Floral Blouse",
       },
     ],
@@ -807,10 +807,10 @@ const products = [
     colors: ["Black", "White", "Gray"],
     collections: "Essentials",
     material: "Cotton",
-    gender: "Women",
+    gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=31",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/x/o/x/5xl-casul-men-t-shirt-nasir-original-imaha6ecnssx4ydy.jpeg?q=70",
         altText: "Casual T-Shirt",
       },
     ],
@@ -834,7 +834,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=32",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/top/b/n/m/l-khtp000180-ketch-original-imagzg6pjwh7hsgr.jpeg?q=70",
         altText: "Off-Shoulder Top",
       },
     ],
@@ -858,7 +858,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=33",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/top/z/g/1/xxl-1-0001-ad-fashion-original-imah4n3qfaktxsqr.jpeg?q=70",
         altText: "Lace-Trimmed Cami Top",
       },
     ],
@@ -882,7 +882,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=34",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/l/n/k/m-women-oversized-t-shirt01-requin-original-imahymygywhg8hpa.jpeg?q=70",
         altText: "Graphic Print Tee",
       },
     ],
@@ -906,7 +906,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=35",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/top/b/n/m/l-khtp000180-ketch-original-imagzg6pjwh7hsgr.jpeg?q=70",
         altText: "Ribbed Long-Sleeve Top",
       },
     ],
@@ -930,7 +930,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=36",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/blouse/x/4/t/28-hand-frill-elbow-dobby-atibha-fashion-original-imah3adtp5pppx54.jpeg?q=70",
         altText: "Ruffle-Sleeve Blouse",
       },
     ],
@@ -951,10 +951,10 @@ const products = [
     colors: ["White", "Light Blue", "Black"],
     collections: "Office Collection",
     material: "Cotton",
-    gender: "Women",
+    gender: "Men",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=37",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/a/n/l/m-checks-blue-l-jadouncreation-original-imah5bzz38hzhgus.jpeg?q=70",
         altText: "Classic Button-Up Shirt",
       },
     ],
@@ -978,7 +978,7 @@ const products = [
     gender: "Women",
     images: [
       {
-        url: "https://picsum.photos/500/500?random=38",
+        url: "https://rukminim2.flixcart.com/image/612/612/xif0q/top/y/k/n/xxl-1-top-emb-d2-mahira-s-comfort-original-imahc9x7by4aw6pf.jpeg?q=70",
         altText: "V-Neck Wrap Top",
       },
     ],

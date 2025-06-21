@@ -1,180 +1,202 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import PayPalButton from './PayPalButton'
-
-const Cart = {
-    products: [
-        {
-            name: "Stylish Jacket",
-            size: "M",
-            color: "Black",
-            price: 120,
-            image: "https://picsum.photos/500/500?random=21"
-        },
-        {
-            name: "Casual Sneakers",
-            size: "42",
-            color: "White",
-            price: 75,
-            image: "https://picsum.photos/500/500?random=42"
-        }
-    ],
-    totalPrice: 195
-}
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  createCheckout,
+  markCheckoutPaid,
+  finalizeCheckout,
+} from "../../redux/slices/checkoutSlice";
+import { useNavigate } from "react-router-dom";
+import PayPalButton from "./PayPalButton";
 
 const CheckOut = () => {
-    const navigate = useNavigate()
-    const [checkOutId, setcheckOutId] = useState(null)
-    const [shippingAddress, setshippingAddress] = useState({
-        firstName: "",
-        lastName: "",
-        address: "",
-        city: "",
-        postalCode: "",
-        country: "",
-        phone: ""
-    })
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const handleCreateCheckOut = (e) => {
-        e.preventDefault()
-        setcheckOutId(123)
+  const { cart } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.auth);
+  const { checkout, loading, error } = useSelector((state) => state.checkout);
+
+  const [shippingAddress, setShippingAddress] = useState({
+    firstName: "",
+    lastName: "",
+    address: "",
+    city: "",
+    postalCode: "",
+    country: "",
+    phone: "",
+  });
+
+  useEffect(() => {
+    if (!cart?.products?.length) {
+      navigate("/");
     }
+  }, [cart]);
 
-    const handlePaymentSucess = (details) => {
-        console.log("Payment Successful", details)
-        navigate("/order-confirmation")
+  const handleCheckout = async (e) => {
+    e.preventDefault();
+
+    const res = await dispatch(
+      createCheckout({
+        checkoutItems: cart.products,
+        shippingAddress,
+        paymentMethod: "PayPal",
+        totalPrice: cart.totalPrice,
+      })
+    );
+
+    if (res.payload?._id) {
+      console.log("Checkout created with ID:", res.payload._id);
     }
+  };
 
-    return (
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto py-10 px-6 tracking-tighter'>
-            <div className='rounded-lg bg-white p-6'>
-                <h2 className="text-2xl uppercase mb-6">Checkout</h2>
-                <form onSubmit={handleCreateCheckOut}>
-                    <h3 className='text-lg mb-4'>Contact Details</h3>
-                    <div className='mb-4'>
-                        <label className='block text-gray-700'>Email</label>
-                        <input type="email" value="user@example.com" className='w-full p-2 border rounded' disabled />
-                    </div>
-                    <h3 className='text-lg mb-4'>Delivery</h3>
-                    <div className="mb-4 grid grid-cols-2 gap-4">
-                        <div>
-                            <label className="block text-gray-700">First Name</label>
-                            <input
-                                type="text"
-                                value={shippingAddress.firstName}
-                                onChange={(e) => setshippingAddress({ ...shippingAddress, firstName: e.target.value })}
-                                className='w-full p-2 border rounded'
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-gray-700">Last Name</label>
-                            <input
-                                type="text"
-                                value={shippingAddress.lastName}
-                                onChange={(e) => setshippingAddress({ ...shippingAddress, lastName: e.target.value })}
-                                className='w-full p-2 border rounded'
-                            />
-                        </div>
-                    </div>
-                    <div className='mb-4'>
-                        <label className='block text-gray-700'>Address</label>
-                        <input
-                            onChange={(e) => setshippingAddress({ ...shippingAddress, address: e.target.value })}
-                            className='w-full p-2 border rounded'
-                            type="text"
-                            value={shippingAddress.address}
-                        />
-                    </div>
-                    <div className="mb-4 grid grid-cols-2 gap-4">
-                        <div>
-                            <label className="block text-gray-700">City</label>
-                            <input
-                                type="text"
-                                value={shippingAddress.city}
-                                onChange={(e) => setshippingAddress({ ...shippingAddress, city: e.target.value })}
-                                className='w-full p-2 border rounded'
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-gray-700">Postal Code</label>
-                            <input
-                                type="text"
-                                value={shippingAddress.postalCode}
-                                onChange={(e) => setshippingAddress({ ...shippingAddress, postalCode: e.target.value })}
-                                className='w-full p-2 border rounded'
-                            />
-                        </div>
-                    </div>
-                    <div className='mb-4'>
-                        <label className='block text-gray-700'>Country</label>
-                        <input
-                            onChange={(e) => setshippingAddress({ ...shippingAddress, country: e.target.value })}
-                            className='w-full p-2 border rounded'
-                            type="text"
-                            value={shippingAddress.country}
-                        />
-                    </div>
-                    <div className='mb-4'>
-                        <label className='block text-gray-700'>Phone</label>
-                        <input
-                            onChange={(e) => setshippingAddress({ ...shippingAddress, phone: e.target.value })}
-                            className='w-full p-2 border rounded'
-                            type="tel"
-                            value={shippingAddress.phone}
-                        />
-                    </div>
-                    <div className="mt-6">
-                        {!checkOutId ? (
-                            <button type='submit' className='w-full bg-black text-white py-3 rounded'>
-                                Continue to Payment
-                            </button>
-                        ) : (
-                            <div >
-                                <h3 className='text-lg mb-4'>Pay with Paypal</h3>
-                                <PayPalButton
-                                    amount={Cart.totalPrice}
-                                    currency="USD"
-                                    onSuccess={handlePaymentSucess}
-                                    onError={() => alert("Payment Failed Try Again")}
-                                />
-                            </div>
-                        )}
-                    </div>
-                </form>
-            </div>
+  const handlePaymentSuccess = async (paymentDetails) => {
+    if (!checkout?._id) return;
 
-            <div className='bg-gray-50 p-6 rounded-lg'>
-                <h3 className='text-lg mb-4'>Order Summary</h3>
-                <div className='border-t py-4 mb-4'>
-                    {Cart.products.map((product, index) => (
-                        <div key={index} className='flex items-start justify-between py-2 border-b'>
-                            <div className='flex items'>
-                                <img src={product.image} alt={product.name} className='w-20 h-24 object-cover mr-4' />
-                                <div>
-                                    <h3 className='text-md'>{product.name}</h3>
-                                    <p className='text-gray-500'>Size: {product.size}</p>
-                                    <p className='text-gray-500'>Color: {product.color}</p>
-                                </div>
-                            </div>
-                            <p className='text-xl'>${product.price?.toLocaleString()}</p>
-                        </div>
-                    ))}
-                </div>
-                <div className="flex justify-between items-center text-lg mb-4">
-                    <p>Subtotal</p>
-                    <p>${Cart.totalPrice?.toLocaleString()}</p>
-                </div>
-                <div className='flex justify-between items-center text-lg'>
-                    <p>Shipping</p>
-                    <p>Free</p>
-                </div>
-                <div className='flex justify-between items-center text-lg mt-4 border-t pt-4'>
-                    <p>Total</p>
-                    <p>${Cart.totalPrice?.toLocaleString()}</p>
-                </div>
+    await dispatch(
+      markCheckoutPaid({
+        checkoutId: checkout._id,
+        paymentDetails,
+      })
+    );
+
+    await dispatch(finalizeCheckout(checkout._id));
+
+    navigate("/order-confirmation");
+  };
+
+  return (
+    <div className="max-w-6xl mx-auto py-10 px-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {/* FORM */}
+      <form onSubmit={handleCheckout} className="bg-white p-6 rounded">
+        <h2 className="text-2xl font-bold mb-6">Checkout</h2>
+
+        <input
+          type="text"
+          placeholder="First Name"
+          required
+          value={shippingAddress.firstName}
+          onChange={(e) =>
+            setShippingAddress({ ...shippingAddress, firstName: e.target.value })
+          }
+          className="w-full border p-2 mb-4 rounded"
+        />
+        <input
+          type="text"
+          placeholder="Last Name"
+          required
+          value={shippingAddress.lastName}
+          onChange={(e) =>
+            setShippingAddress({ ...shippingAddress, lastName: e.target.value })
+          }
+          className="w-full border p-2 mb-4 rounded"
+        />
+        <input
+          type="text"
+          placeholder="Address"
+          required
+          value={shippingAddress.address}
+          onChange={(e) =>
+            setShippingAddress({ ...shippingAddress, address: e.target.value })
+          }
+          className="w-full border p-2 mb-4 rounded"
+        />
+        <input
+          type="text"
+          placeholder="City"
+          required
+          value={shippingAddress.city}
+          onChange={(e) =>
+            setShippingAddress({ ...shippingAddress, city: e.target.value })
+          }
+          className="w-full border p-2 mb-4 rounded"
+        />
+        <input
+          type="text"
+          placeholder="Postal Code"
+          required
+          value={shippingAddress.postalCode}
+          onChange={(e) =>
+            setShippingAddress({ ...shippingAddress, postalCode: e.target.value })
+          }
+          className="w-full border p-2 mb-4 rounded"
+        />
+        <input
+          type="text"
+          placeholder="Country"
+          required
+          value={shippingAddress.country}
+          onChange={(e) =>
+            setShippingAddress({ ...shippingAddress, country: e.target.value })
+          }
+          className="w-full border p-2 mb-4 rounded"
+        />
+        <input
+          type="text"
+          placeholder="Phone"
+          required
+          value={shippingAddress.phone}
+          onChange={(e) =>
+            setShippingAddress({ ...shippingAddress, phone: e.target.value })
+          }
+          className="w-full border p-2 mb-4 rounded"
+        />
+
+        {!checkout ? (
+          <button
+            type="submit"
+            disabled={loading}
+            className="bg-black text-white py-3 px-6 rounded w-full mt-4"
+          >
+            {loading ? "Processing..." : "Continue to Payment"}
+          </button>
+        ) : (
+          <div className="mt-6">
+            <h3 className="text-lg mb-2">Pay with PayPal</h3>
+            <PayPalButton
+              amount={cart.totalPrice}
+              currency="USD"
+              onSuccess={handlePaymentSuccess}
+              onError={() => alert("Payment Failed")}
+            />
+          </div>
+        )}
+
+        {error && <p className="text-red-600 mt-4">{error}</p>}
+      </form>
+
+      {/* ORDER SUMMARY */}
+      <div className="p-6 bg-gray-50 rounded">
+        <h3 className="text-lg mb-4 font-semibold">Order Summary</h3>
+        {cart.products.map((item) => (
+          <div
+            key={item._id}
+            className="flex items-start gap-4 mb-6 border-b pb-4"
+          >
+            <img
+              src={item.image}
+              alt={item.name}
+              className="w-20 h-24 object-cover rounded"
+              onError={(e) => (e.target.src = "/placeholder.png")} // fallback image
+            />
+            <div className="flex-1">
+              <p className="font-semibold">{item.name}</p>
+              <p className="text-sm text-gray-600">
+                Size: {item.size} | Color: {item.color}
+              </p>
+              <p className="text-sm mt-1 text-gray-800 font-medium">
+                ${item.price}
+              </p>
             </div>
+          </div>
+        ))}
+
+        <div className="mt-4 flex justify-between text-xl font-bold">
+          <span>Total</span>
+          <span>${cart.totalPrice?.toFixed(2)}</span>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default CheckOut
+export default CheckOut;
