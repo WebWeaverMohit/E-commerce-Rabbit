@@ -59,7 +59,9 @@ export const finalizeCheckout = createAsyncThunk(
     try {
       const token = localStorage.getItem("userToken");
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/checkout/${checkoutId}/finalize`,
+        `${
+          import.meta.env.VITE_BACKEND_URL
+        }/api/checkout/${checkoutId}/finalize`,
         {},
         {
           headers: {
@@ -106,8 +108,9 @@ const checkoutSlice = createSlice({
       .addCase(markCheckoutPaid.fulfilled, (state, action) => {
         state.checkout = { ...state.checkout, ...action.payload };
       })
-      .addCase(finalizeCheckout.fulfilled, (state) => {
-        state.checkout = null; // reset after order creation
+      .addCase(finalizeCheckout.fulfilled, (state, action) => {
+        // ✅ Don't reset checkout here
+        // Optional: state.checkout = { ...state.checkout, isFinalized: true };
       });
   },
 });

@@ -1,41 +1,57 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
+import { fetchAdminProducts } from "../redux/slices/adminProductSlice";
+import { fetchAllOrders } from "../redux/slices/adminOrderSlice";
 
 const AdminHomePage = () => {
+    const dispatch = useDispatch();
 
-    const orders = [
-        {
-            _id: 123123,
-            user: {
-                name: "John Deo",
-            },
-            totalPrice: 110,
-            status: "Processing"
-        }
-        
-    ]
+    const { products, loading: productsLoading, error: productsError } = useSelector((state) => state.adminProducts);
+    const {
+        orders,
+        totalOrders,
+        totalSales,
+        loading: ordersLoading,
+        error: ordersError,
+    } = useSelector((state) => state.adminOrders);
+
+    useEffect(() => {
+        dispatch(fetchAdminProducts());
+        dispatch(fetchAllOrders());
+    }, [dispatch]);
 
     return (
         <div className='max-w-7xl mx-auto p-6'>
-            <h1 className='text-3xl font-bold mb-6 '>Admin Dashboard</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div className="p-4 shadow-md rounded-lg">
-                    <h2 className="text-xl font-semibold">Revenue</h2>
-                    <p className="text-2xl">$20000</p>
+            <h1 className='text-3xl font-bold mb-6'>Admin Dashboard</h1>
+
+            {productsLoading || ordersLoading ? (
+                <p>Loading....</p>
+            ) : productsError ? (
+                <p className='text-red-500'>Error fetching Products: {productsError}</p>
+            ) : ordersError ? (
+                <p className='text-red-500'>Error fetching Orders: {ordersError}</p>
+            ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="p-4 shadow-md rounded-lg">
+                        <h2 className="text-xl font-semibold">Revenue</h2>
+                        <p className="text-2xl">${totalSales?.toFixed(2)}</p>
+                    </div>
+                    <div className="p-4 shadow-md rounded-lg">
+                        <h2 className="text-xl font-semibold">Total Orders</h2>
+                        <p className="text-2xl">{totalOrders}</p>
+                        <Link to='/admin/orders' className='text-blue-500 hover:underline'>Manage Orders</Link>
+                    </div>
+                    <div className="p-4 shadow-md rounded-lg">
+                        <h2 className="text-xl font-semibold">Total Products</h2>
+                        <p className="text-2xl">{products.length}</p>
+                        <Link to='/admin/products' className='text-blue-500 hover:underline'>Manage Products</Link>
+                    </div>
                 </div>
-                <div className="p-4 shadow-md rounded-lg">
-                    <h2 className="text-xl font-semibold">Total Orders</h2>
-                    <p className="text-2xl">200</p>
-                    <Link to='/admin/orders' className='text-blue-500 hover:underline'>Manage Orders</Link>
-                </div>
-                <div className="p-4 shadow-md rounded-lg">
-                    <h2 className="text-xl font-semibold">Total Products</h2>
-                    <p className="text-2xl">100</p>
-                    <Link to='/admin/products' className='text-blue-500 hover:underline'>Manage Products</Link>
-                </div>
-            </div>
+            )}
+
             <div className="mt-6">
-                <h2 className="text-2xl font-bold mb-4">Revent Orders</h2>
+                <h2 className="text-2xl font-bold mb-4">Recent Orders</h2>
                 <div className="overflow-x-auto">
                     <table className='min-w-full text-left text-gray-500'>
                         <thead className='bg-gray-100 text-xs uppercase text-gray-700'>
@@ -43,7 +59,8 @@ const AdminHomePage = () => {
                                 <th className="py-3 px-4">Order ID</th>
                                 <th className="py-3 px-4">User</th>
                                 <th className="py-3 px-4">Total Price</th>
-                                <th className="py-3 px-4">Status</th>
+                                <th className="py-3 px-4">Payment Status</th>
+                                <th className="py-3 px-4">Delivery Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -51,14 +68,23 @@ const AdminHomePage = () => {
                                 orders.map((order) => (
                                     <tr className='border-b hover:bg-gray-50 cursor-pointer' key={order._id}>
                                         <td className="p-4">{order._id}</td>
-                                        <td className="p-4">{order.user.name}</td>
-                                        <td className="p-4">{order.totalPrice}</td>
-                                        <td className="p-4">{order.status}</td>
+                                        <td className="p-4">{order.user?.name || "Unknown"}</td>
+                                        <td className="p-4">${order.totalPrice?.toFixed(2)}</td>
+                                        <td className="p-4">
+                                            <span className={`px-2 py-1 text-sm rounded-full font-medium ${order.isPaid ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                                                {order.isPaid ? 'Paid' : 'Pending'}
+                                            </span>
+                                        </td>
+                                        <td className="p-4">
+                                            <span className={`px-2 py-1 text-sm rounded-full font-medium ${order.isDelivered ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}`}>
+                                                {order.isDelivered ? 'Delivered' : 'Pending Delivery'}
+                                            </span>
+                                        </td>
                                     </tr>
                                 ))
                             ) : (
-                                <tr className="">
-                                    <td className="p-4 text-center text-gray-500" colSpan={4}>No recent order found</td>
+                                <tr>
+                                    <td className="p-4 text-center text-gray-500" colSpan={5}>No recent order found</td>
                                 </tr>
                             )}
                         </tbody>
@@ -66,7 +92,7 @@ const AdminHomePage = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default AdminHomePage
+export default AdminHomePage;

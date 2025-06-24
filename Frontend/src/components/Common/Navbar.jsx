@@ -10,6 +10,7 @@ const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [navDrawerOpen, setNavDrawerOpen] = useState(false);
   const { cart } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.auth)
 
   const cartItemCount =
     cart?.products?.reduce((total, product) => total + product.quantity, 0) || 0;
@@ -59,9 +60,10 @@ const Navbar = () => {
         </div>
 
         <div className='flex items-center space-x-4'>
-          <Link className='block bg-black px-2 py-1 rounded text-sm text-white' to='/admin'>
+          {user && user.role === "admin" && (<Link className='block bg-black px-2 py-1 rounded text-sm text-white' to='/admin'>
             Admin
-          </Link>
+          </Link>)}
+
           <Link to='/Profile' className='hover:text-black'>
             <HiOutlineUser className='h-6 w-6 text-gray-700' />
           </Link>
@@ -84,9 +86,8 @@ const Navbar = () => {
 
       {/* Nav Drawer */}
       <div
-        className={`fixed top-0 left-0 w-3/4 md:w-1/3 border-r border-gray-500 h-full bg-white shadow-lg transform transition-transform duration-300 z-50 ${
-          navDrawerOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
+        className={`fixed top-0 left-0 w-3/4 md:w-1/3 border-r border-gray-500 h-full bg-white shadow-lg transform transition-transform duration-300 z-50 ${navDrawerOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}
       >
         <div className='flex justify-end p-4'>
           <button onClick={toggleNavDrawer}>

@@ -38,7 +38,7 @@ export const updateUser = createAsyncThunk(
   "admin/updateUser",
   async ({ id, name, email, role }) => {
     const response = await axios.put(
-      `${import.meta.env.VITE_BACKEND_URL}/api/admin/user/${id}`,
+      `${import.meta.env.VITE_BACKEND_URL}/api/admin/users/${id}`,
       { name, email, role },
       {
         headers: {
@@ -46,7 +46,7 @@ export const updateUser = createAsyncThunk(
         },
       }
     );
-    return response.data; // ✅ fixed: added return
+    return response.data.user; // ✅ fixed: added return
   }
 );
 
