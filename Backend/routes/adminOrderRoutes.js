@@ -11,12 +11,21 @@ const router = express.Router();
 router.get("/", protect, admin, async (req, res) => {
   try {
     const orders = await Order.find({}).populate("user", "name email");
-    res.json(orders);
+
+    const totalOrders = orders.length;
+    const totalSales = orders.reduce((acc, order) => acc + order.totalPrice, 0);
+
+    res.json({
+      orders,
+      totalOrders,
+      totalSales,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "server error" });
   }
 });
+
 
 // route PUT /api/admin/orders/:id
 // desc update order status

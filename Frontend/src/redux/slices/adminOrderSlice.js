@@ -51,6 +51,8 @@ const adminOrderSlice = createSlice({
   name: "adminOrders",
   initialState: {
     orders: [],
+    totalOrders: 0,
+    totalSales: 0,
     loading: false,
     error: null,
   },
@@ -63,7 +65,9 @@ const adminOrderSlice = createSlice({
       })
       .addCase(fetchAllOrders.fulfilled, (state, action) => {
         state.loading = false;
-        state.orders = action.payload;
+        state.orders = action.payload.orders;
+        state.totalOrders = action.payload.totalOrders;
+        state.totalSales = action.payload.totalSales;
       })
       .addCase(fetchAllOrders.rejected, (state, action) => {
         state.loading = false;
@@ -72,16 +76,15 @@ const adminOrderSlice = createSlice({
 
       .addCase(updateOrderStatus.fulfilled, (state, action) => {
         const updatedOrder = action.payload;
-        console.log(action.payload);
-
-        const orderIndex = state.orders.findIndex(
+        const index = state.orders.findIndex(
           (order) => order._id === updatedOrder._id
         );
-        if (orderIndex !== -1) {
-          state.orders[orderIndex] = updatedOrder;
+        if (index !== -1) {
+          state.orders[index] = updatedOrder;
         }
       });
   },
 });
+
 
 export default adminOrderSlice.reducer;

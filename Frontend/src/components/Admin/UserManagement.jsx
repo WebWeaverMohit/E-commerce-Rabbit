@@ -171,12 +171,16 @@ const UserManagement = () => {
                                             </select>
                                         </td>
                                         <td className="p-4">
-                                            <button
-                                                className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-                                                onClick={() => handleDeleteUser(u._id)}
-                                            >
-                                                Delete
-                                            </button>
+                                            {user._id !== u._id ? (
+                                                <button
+                                                    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                                                    onClick={() => handleDeleteUser(u._id)}
+                                                >
+                                                    Delete
+                                                </button>
+                                            ) : (
+                                                <span className="text-gray-400 text-sm italic">You</span>
+                                            )}
                                         </td>
                                     </tr>
                                 ) : null

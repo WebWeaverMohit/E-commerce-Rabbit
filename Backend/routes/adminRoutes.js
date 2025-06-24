@@ -48,7 +48,7 @@ router.post("/", protect, admin, async (req, res) => {
 
 // route PUT /api/admin/users/:id
 // desc update user info.. - name, email, role
-// access private/admin
+// access private/adminOr
 
 router.put("/:id", protect, admin, async (req, res) => {
   try {

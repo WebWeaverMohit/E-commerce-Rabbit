@@ -90,11 +90,9 @@ router.put("/:id", protect, admin, async (req, res) => {
       sku,
     } = req.body;
 
-    // find the product in the databse
     const product = await Product.findById(req.params.id);
 
     if (product) {
-      // update products field
       product.name = name || product.name;
       product.description = description || product.description;
       product.price = price || product.price;
@@ -117,7 +115,6 @@ router.put("/:id", protect, admin, async (req, res) => {
       product.weight = weight || product.weight;
       product.sku = sku || product.sku;
 
-      //    save the updated product
       const updatedProduct = await product.save();
       res.json(updatedProduct);
     } else {

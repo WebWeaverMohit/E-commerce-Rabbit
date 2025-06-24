@@ -19,7 +19,7 @@ const AdminSidebar = () => {
         <div className='p-6'>
             {/* Brand */}
             <div className="mb-6">
-                <Link to='/admin' className="text-2xl font-medium text-white">Rabbit</Link>
+                <Link to='/admin' className="text-2xl font-medium text-white">UrbanMart</Link>
             </div>
 
             {/* Admin Title */}
